@@ -1,0 +1,16 @@
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Noticias de la Gastronomía Boliviana</h1>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let noticia of noticias">
+        <div class="card mb-4">
+          <img [src]="noticia.imagen" class="card-img-top" [alt]="noticia.titulo">
+          <div class="card-body">
+            <h5 class="card-title">{{ noticia.titulo }}</h5>
+            <p class="card-text">{{ noticia.descripcion }}</p>
+            <a [href]="noticia.enlace" target="_blank" class="btn btn-primary">Leer más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

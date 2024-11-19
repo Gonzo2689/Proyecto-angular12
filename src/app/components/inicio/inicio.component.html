@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <h1>Inicio</h1>
+    <p>Bienvenido a la página principal.</p>
+  </div>
+  
+<div class="container mt-4">
+  <h2>Platos Más Conocidos</h2>
+  <div class="row mt-3">
+    <div class="col-md-4" *ngFor="let plato of platosConocidos">
+      <div class="card">
+        <img [src]="plato.imagen" class="card-img-top" [alt]="plato.nombre">
+        <div class="card-body">
+          <h5 class="card-title">{{ plato.nombre }}</h5>
+          <p class="card-text">{{ plato.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt-5">Postres</h2>
+  <div class="row mt-3">
+    <div class="col-md-4" *ngFor="let postre of postres">
+      <div class="card">
+        <img [src]="postre.imagen" class="card-img-top" [alt]="postre.nombre">
+        <div class="card-body">
+          <h5 class="card-title">{{ postre.nombre }}</h5>
+          <p class="card-text">{{ postre.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

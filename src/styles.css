@@ -1,0 +1,23 @@
+/* Estilos generales para hacer el footer sticky */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  #app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
+  }
+  
+  main {
+    flex: 1; /* Empuja el footer hacia abajo si el contenido es corto */
+  }
+  
+  footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
