@@ -1,48 +1,155 @@
 <div class="container mt-4">
-    <h1>Contactos</h1>
-    <form (ngSubmit)="enviarFormulario()" #formulario="ngForm">
-      <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input
-          type="text"
-          id="nombre"
-          class="form-control"
-          name="nombre"
-          [(ngModel)]="datosFormulario.nombre"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="correo" class="form-label">Correo Electrónico</label>
-        <input
-          type="email"
-          id="correo"
-          class="form-control"
-          name="correo"
-          [(ngModel)]="datosFormulario.correo"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="mensaje" class="form-label">Mensaje</label>
-        <textarea
-          id="mensaje"
-          class="form-control"
-          name="mensaje"
-          [(ngModel)]="datosFormulario.mensaje"
-          required
-        ></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">
-        Enviar
-      </button>
-    </form>
-  
-    <div *ngIf="mostrarDatos" class="mt-4">
-      <h3>Datos enviados:</h3>
-      <p><strong>Nombre:</strong> {{ datosFormulario.nombre }}</p>
-      <p><strong>Correo:</strong> {{ datosFormulario.correo }}</p>
-      <p><strong>Mensaje:</strong> {{ datosFormulario.mensaje }}</p>
+  <h1>Contactos</h1>
+  <form (ngSubmit)="enviarFormulario()" #formulario="ngForm">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        class="form-control"
+        name="nombre"
+        [(ngModel)]="datosFormulario.nombre"
+        required
+      />
     </div>
+
+    <div class="mb-3">
+      <label for="apellidos" class="form-label">Apellidos</label>
+      <input
+        type="text"
+        id="apellidos"
+        class="form-control"
+        name="apellidos"
+        [(ngModel)]="datosFormulario.apellidos"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input
+        type="text"
+        id="direccion"
+        class="form-control"
+        name="direccion"
+        [(ngModel)]="datosFormulario.direccion"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo Electrónico</label>
+      <input
+        type="email"
+        id="correo"
+        class="form-control"
+        name="correo"
+        [(ngModel)]="datosFormulario.correo"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="contrasena" class="form-label">Contraseña</label>
+      <input
+        type="password"
+        id="contrasena"
+        class="form-control"
+        name="contrasena"
+        [(ngModel)]="datosFormulario.contrasena"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+      <input
+        type="date"
+        id="fechaNacimiento"
+        class="form-control"
+        name="fechaNacimiento"
+        [(ngModel)]="datosFormulario.fechaNacimiento"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="colorFavorito" class="form-label">Color Favorito</label>
+      <input
+        type="color"
+        id="colorFavorito"
+        class="form-control"
+        name="colorFavorito"
+        [(ngModel)]="datosFormulario.colorFavorito"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label><strong>Sexo:</strong></label><br />
+      <input
+        type="radio"
+        name="sexo"
+        value="Mujer"
+        [(ngModel)]="datosFormulario.sexo"
+        required
+      /> Mujer
+      <input
+        type="radio"
+        name="sexo"
+        value="Hombre"
+        [(ngModel)]="datosFormulario.sexo"
+        required
+      /> Hombre
+    </div>
+
+    <!-- Comidas preferidas -->
+    <div class="mb-3">
+      <label class="form-label"><strong>Comidas Preferidas:</strong></label><br />
+      <div *ngFor="let comida of ['Salteña', 'Pique Macho', 'Majadito']">
+        <input
+          type="checkbox"
+          [value]="comida"
+          (change)="actualizarComidas($event)"
+        />
+        {{ comida }}
+      </div>
+    </div>
+
+    <!-- Postres preferidos -->
+    <div class="mb-3">
+      <label class="form-label"><strong>Postres Preferidos:</strong></label><br />
+      <div *ngFor="let postre of ['Helado de Canela', 'Alfajor de Maicena', 'Tawa Tawas']">
+        <input
+          type="checkbox"
+          [value]="postre"
+          (change)="actualizarPostres($event)"
+        />
+        {{ postre }}
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="formulario.invalid"
+    >
+      Enviar
+    </button>
+  </form>
+
+  <!-- Datos enviados -->
+  <div *ngIf="mostrarDatos" class="mt-4">
+    <h3>Datos enviados:</h3>
+    <p><strong>Nombre:</strong> {{ datosFormulario.nombre }}</p>
+    <p><strong>Apellidos:</strong> {{ datosFormulario.apellidos }}</p>
+    <p><strong>Dirección:</strong> {{ datosFormulario.direccion }}</p>
+    <p><strong>Correo:</strong> {{ datosFormulario.correo }}</p>
+    <p><strong>Contraseña:</strong> {{ datosFormulario.contrasena }}</p>
+    <p><strong>Fecha de Nacimiento:</strong> {{ datosFormulario.fechaNacimiento }}</p>
+    <p><strong>Color Favorito:</strong> {{ datosFormulario.colorFavorito }}</p>
+    <p><strong>Sexo:</strong> {{ datosFormulario.sexo }}</p>
+    <p><strong>Comidas Preferidas:</strong> {{ datosFormulario.comidasPreferidas.join(', ') }}</p>
+    <p><strong>Postres Preferidos:</strong> {{ datosFormulario.postresPreferidos.join(', ') }}</p>
   </div>
-  
+</div>
